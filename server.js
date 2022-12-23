@@ -3,7 +3,7 @@ const dotEnv = require('dotenv');
 const { urlencoded } = require('express');
 const cors = require('cors');
 const dbConnection = require('./database/connection');
-dotEnv.config();
+dotEnv.config({path:'./.env'});
 
 
 const app = express();
@@ -28,10 +28,7 @@ app.get('/', (req, res, next)=>{
 app.use(express.json);
 app.use(urlencoded({extended:true}))
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, ()=>{
-    console.log(`Server Listen on port ${PORT}`);
-});
+
 
 // error handling middle ware
 app.use(function(err, req, res,next){

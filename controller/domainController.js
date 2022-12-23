@@ -1,7 +1,7 @@
 const domainService = require('../service/domainService');
 
 module.exports.createDomain = async (req,res) =>{
-
+console.log(req.body);
 let response ={}
 
 if(req.body == ''){
@@ -9,7 +9,7 @@ if(req.body == ''){
     response.message="Please send proper request with full json body";
     response.body = {};
 } else {
-        try {
+    try {
         const responseFromService = await domainService.createDomain(req.body);
         response.status = 201;
         response.message="Domain Added Succesfully";
